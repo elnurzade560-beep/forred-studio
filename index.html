@@ -3,77 +3,282 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Forred Studio — Indie Game Dev</title>
+    <title>RED REIGN - Forred Studio | Его Правление Не Имеет Конца</title>
     <style>
+        :root {
+            --bg-color: #050609;
+            --card-bg: #0d1117;
+            --accent-color: #e63946; /* Красный акцент из лого */
+            --glitch-cyan: #3b82f6; /* Голубой глитч из лого */
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border-color: #1e293b;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-        }
-        body {
-            background-color: #0b0f19;
-            color: #f3f4f6;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 20px;
         }
-        .container {
-            max-width: 600px;
-            background: #111827;
-            border: 1px solid #1f2937;
-            border-radius: 12px;
-            padding: 40px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-            text-align: center;
-        }
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            color: #ffffff;
-            letter-spacing: 1px;
-        }
-        .tagline {
-            font-size: 1.1rem;
-            color: #9ca3af;
-            margin-bottom: 30px;
-            line-height: 1.5;
-        }
-        .description {
-            font-size: 1rem;
-            color: #d1d5db;
-            margin-bottom: 35px;
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
             line-height: 1.6;
-            text-align: left;
-            background: #1f2937;
-            padding: 20px;
-            border-radius: 8px;
         }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 8%;
+            background: rgba(5, 6, 9, 0.95);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-img {
+            height: 35px;
+            filter: drop-shadow(0 0 5px rgba(59, 130, 246, 0.5));
+        }
+
+        .header-title {
+            font-size: 1.6rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            color: var(--accent-color);
+            text-transform: uppercase;
+        }
+
+        .lang-switch button {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-muted);
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.2s;
+        }
+
+        .lang-switch button.active, .lang-switch button:hover {
+            color: var(--text-main);
+            border-color: var(--accent-color);
+            background: rgba(230, 57, 70, 0.1);
+        }
+
+        .hero {
+            padding: 60px 8% 40px;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            margin-bottom: 10px;
+            line-height: 1.1;
+            text-transform: uppercase;
+            font-weight: 900;
+            color: var(--accent-color);
+            filter: drop-shadow(0 0 10px rgba(230, 57, 70, 0.4));
+        }
+
+        .hero p.tagline {
+            font-size: 1.4rem;
+            color: var(--text-muted);
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px 60px;
+        }
+
+        section {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 35px;
+            margin-bottom: 30px;
+        }
+
+        section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--accent-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .news-card {
+            background: rgba(255, 255, 255, 0.02);
+            border-left: 3px solid var(--accent-color);
+            padding: 15px 20px;
+            margin-top: 15px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .news-date {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 5px;
+        }
+
+        .platforms {
+            margin-top: 15px;
+            display: flex;
+            gap: 20px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
         .btn {
             display: inline-block;
-            background-color: #3b82f6;
+            background-color: var(--accent-color);
             color: white;
-            padding: 12px 24px;
+            padding: 12px 28px;
             border-radius: 6px;
             text-decoration: none;
-            font-weight: bold;
-            transition: background 0.2s;
+            font-weight: 600;
+            margin-top: 15px;
+            transition: 0.2s ease;
         }
+
         .btn:hover {
-            background-color: #2563eb;
+            opacity: 0.9;
+            transform: translateY(-2px);
         }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: var(--text-main);
+            text-decoration: none;
+        }
+
+        /* Динамическое переключение языков */
+        .lang-en { display: none; }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>FORRED STUDIO</h1>
-        <div class="tagline">Independent Game Development</div>
-        <div class="description">
-            Independent indie game dev studio creating atmospheric narrative games. Currently developing a post-apocalyptic retro-futuristic survival thriller set in the ruins of Moscow.
+
+    <header>
+        <div class="header-left">
+            <!-- Используем данные логотипа как изображение -->
+            <img src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgNTAwIDUwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWx0ZXI9InVybCgjZ2xpdGNoLTApIj48cGF0aCBkPSJNMjUwIDUwTDQwIDQ1MGg0MjBMMjUwIDUwek0yNTAgMTAwTDIxNSA0MjBoNzBMMjUwIDEwMHoiIGZpbGw9IiMwMDhiZmYiLz48cGF0aCBkPSJNMjUwIDEyMEwyMjUgNDEwaDUwTDI1MCAxMjB6TTI1MCAxNDBMMjM1IDM5MGgzMEwyNTAgMTQwek0yNTAgMTYwTDI0NSAzNzBoMTBMMjUwIDE2MHoiIGZpbGw9IiNmZjAwNmMiLz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxOTAsIDI3MCkgc2NhbGUoMi41KSI+PHBhdGggZD0iTTAgMjBMNDAgMEg0MEw0MCA0MEgwWk01IDU1TDYwIDUwTDQwIDU1SDBaTTE1IDg1TDI1IDc1SDQwVjkwSDVWMzBaIiBmaWxsPSIjYmMwMDFlIi8+PC9nPjwvZz48ZmlsdGVyIGlkPSJnbGl0Y2gtMCIgeD0iLTQwJSIgeT0iLTQwJSIgd2lkdGg9IjE4MCU%" height="35" class="logo-img" alt="Red Reign Logo">
+            <div class="header-title">RED REIGN</div>
         </div>
-        <a href="https://dtf.ru" class="link-btn btn" target="_blank">Наш DTF / Блог</a>
+        <div class="lang-switch">
+            <button id="btn-ru" class="active" onclick="setLang('ru')">RU</button>
+            <button id="btn-en" onclick="setLang('en')">EN</button>
+        </div>
+    </header>
+
+    <div class="hero">
+        <h1 class="lang-ru">RED REIGN</h1>
+        <h1 class="lang-en">RED REIGN</h1>
+        <p class="tagline lang-ru">Его Правление Не Имеет Конца</p>
+        <p class="tagline lang-en">His Reign Never Ended</p>
+        <p class="lang-ru">Постапокалиптический ретро-футуристический триллер о выживании на руинах Москвы.</p>
+        <p class="lang-en">A post-apocalyptic retro-futuristic survival thriller set in the ruins of Moscow.</p>
     </div>
+
+    <div class="container">
+        
+        <!-- СЮЖЕТ -->
+        <section>
+            <h2 class="lang-ru">Сюжет</h2>
+            <h2 class="lang-en">Story</h2>
+            <p class="lang-ru">Мир утонул в тумане. Там, где когда-то возвышался Кремль, теперь лишь руины и тени забытого прошлого. Вы — выживший, чья единственная зацепка к правде о случившемся — это таинственное «Его Правление», которое, кажется, никогда не заканчивалось. Вам предстоит столкнуться не только с суровыми условиями и заброшенными объектами, но и с психологическим давлением постоянной неизвестности. Ресурсы всегда на исходе, и каждое решение имеет вес.</p>
+            <p class="lang-en">The world is engulfed in fog. Where the Kremlin once stood, only ruins and shadows of a forgotten past remain. You are a survivor, and your only clue to the truth of what happened is the mysterious 'His Reign,' which seems to have never ended. You will face not only harsh environmental conditions and abandoned sites but also the psychological pressure of constant uncertainty. Resources are always scarce, and every decision carries weight.</p>
+        </section>
+
+        <!-- ЛОР -->
+        <section>
+            <h2 class="lang-ru">Лор</h2>
+            <h2 class="lang-en">Lore</h2>
+            <p class="lang-ru">Когда мир рухнул, немногие, кто выжил, цеплялись за остатки старых технологий. Лор RED REIGN пропитан ретро-футуризмом, где громоздкие ЭВМ соседствуют с обветшалыми советскими бетонными конструкциями. Странные глитч-сигналы и непонятные аномалии — это повседневная реальность. Выжившие пытаются расшифровать эти сигналы, надеясь понять, что же на самом деле произошло в те роковые дни, когда «Правление» началось.</p>
+            <p class="lang-en">When the world fell, the few who survived clung to the remnants of old technology. The lore of RED REIGN is steeped in retro-futurism, where bulky computers sit alongside dilapidated Soviet concrete structures. Strange glitch-signals and unfathomable anomalies are part of everyday reality. Survivors try to decode these signals, hoping to understand what really happened in those fatal days when the 'Reign' began.</p>
+        </section>
+
+        <!-- О СТУДИИ -->
+        <section>
+            <h2 class="lang-ru">О студии</h2>
+            <h2 class="lang-en">About the Studio</h2>
+            <p class="lang-ru">RED REIGN разрабатывается независимой инди-командой Forred Studio. Наша цель — создавать глубокие сюжетные игры с упором на атмосферу, психологический триллер и уникальный визуальный стиль.</p>
+            <p class="lang-en">RED REIGN is being developed by Forred Studio, an independent indie team. Our goal is to create deep, story-driven games with an emphasis on atmosphere, psychological thrillers, and a unique visual style.</p>
+        </section>
+
+        <!-- НОВОСТИ -->
+        <section>
+            <h2 class="lang-ru">Новости и Блог разработки</h2>
+            <h2 class="lang-en">News & Devlog</h2>
+            
+            <div class="news-card">
+                <div class="news-date">2026</div>
+                <strong class="lang-ru">Анонс проекта: Постапокалипсис в Москве</strong>
+                <strong class="lang-en">Project Announcement: Post-Apocalypse in Moscow</strong>
+                <p class="lang-ru">Мы официально анонсируем RED REIGN! Весь процесс разработки, от концепт-артов до лора, будет опубликован в нашем блоге.</p>
+                <p class="lang-en">We officially announce RED REIGN! The entire development process, from concept art to lore, will be published on our blog.</p>
+            </div>
+
+            <a href="https://dtf.ru" target="_blank" class="btn lang-ru">Читать Девблог на DTF</a>
+            <a href="https://dtf.ru" target="_blank" class="btn lang-en">Read Devlog on DTF</a>
+        </section>
+
+        <!-- ПЛАТФОРМЫ И РЕЛИЗ -->
+        <section>
+            <h2 class="lang-ru">Релиз и Платформы</h2>
+            <h2 class="lang-en">Release & Platforms</h2>
+            <p class="lang-ru">Выход игры запланирован на 2027 год.</p>
+            <p class="lang-en">The game is scheduled for release in 2027.</p>
+            <div class="platforms">
+                <span>XBOX</span>
+                <span>STEAM</span>
+                <span>PS5</span>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>© 2026 Forred Studio. Developed in Russia. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function setLang(lang) {
+            // Переключаем контент
+            document.querySelectorAll('.lang-ru').forEach(el => el.style.display = lang === 'ru' ? 'block' : 'none');
+            document.querySelectorAll('.lang-en').forEach(el => el.style.display = lang === 'en' ? 'block' : 'none');
+            
+            // Переключаем кнопки
+            document.getElementById('btn-ru').classList.toggle('active', lang === 'ru');
+            document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+            
+            // Сохраняем язык (можно будет добавить LocalStorage)
+        }
+    </script>
 </body>
 </html>
