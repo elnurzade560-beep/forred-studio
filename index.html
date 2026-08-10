@@ -3,282 +3,258 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RED REIGN - Forred Studio | Его Правление Не Имеет Конца</title>
+    <title>RED REIGN — Официальный сайт</title>
+    <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Oswald:wght@500;700&family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #050609;
-            --card-bg: #0d1117;
-            --accent-color: #e63946; /* Красный акцент из лого */
-            --glitch-cyan: #3b82f6; /* Голубой глитч из лого */
-            --text-main: #f1f5f9;
-            --text-muted: #94a3b8;
-            --border-color: #1e293b;
+            --red: #d32f2f;
+            --dark-red: #8b0000;
+            --bg-black: #0d0d0d;
+            --panel-bg: #161616;
+            --text-gold: #e6c687;
+            --text-white: #e0e0e0;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
         }
 
         body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            line-height: 1.6;
+            background-color: var(--bg-black);
+            color: var(--text-white);
+            font-family: 'Roboto Condensed', sans-serif;
+            overflow-x: hidden;
+            background-image: radial-gradient(circle at center, #1a0505 0%, #0d0d0d 100%);
         }
 
+        /* Шапка */
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 8%;
-            background: rgba(5, 6, 9, 0.95);
-            border-bottom: 1px solid var(--border-color);
+            padding: 20px 50px;
+            background: rgba(13, 13, 13, 0.95);
+            border-bottom: 3px solid var(--red);
             position: sticky;
             top: 0;
             z-index: 100;
-            backdrop-filter: blur(10px);
         }
 
-        .header-left {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .logo-img {
-            height: 35px;
-            filter: drop-shadow(0 0 5px rgba(59, 130, 246, 0.5));
-        }
-
-        .header-title {
-            font-size: 1.6rem;
-            font-weight: 900;
-            letter-spacing: 2px;
-            color: var(--accent-color);
+        .logo {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2.2rem;
+            color: var(--red);
             text-transform: uppercase;
+            letter-spacing: 4px;
+            text-shadow: 0 0 10px rgba(211, 47, 47, 0.5);
+            border: 2px solid var(--red);
+            padding: 5px 15px;
         }
 
-        .lang-switch button {
-            background: transparent;
-            border: 1px solid var(--border-color);
-            color: var(--text-muted);
-            padding: 6px 12px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: 0.2s;
+        nav a {
+            color: var(--text-white);
+            text-decoration: none;
+            margin-left: 30px;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 1px;
+            transition: color 0.3s;
         }
 
-        .lang-switch button.active, .lang-switch button:hover {
-            color: var(--text-main);
-            border-color: var(--accent-color);
-            background: rgba(230, 57, 70, 0.1);
+        nav a:hover {
+            color: var(--red);
         }
 
+        /* Главный баннер (Hero Section) */
         .hero {
-            padding: 60px 8% 40px;
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             text-align: center;
-            max-width: 900px;
-            margin: 0 auto;
+            border-bottom: 2px solid #333;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)), url('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1920') center/cover;
+            padding: 0 20px;
         }
 
         .hero h1 {
-            font-size: 3.2rem;
+            font-family: 'Oswald', sans-serif;
+            font-size: 5rem;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 8px;
             margin-bottom: 10px;
-            line-height: 1.1;
-            text-transform: uppercase;
-            font-weight: 900;
-            color: var(--accent-color);
-            filter: drop-shadow(0 0 10px rgba(230, 57, 70, 0.4));
+            text-shadow: 3px 3px 0px var(--dark-red);
         }
 
-        .hero p.tagline {
-            font-size: 1.4rem;
-            color: var(--text-muted);
-            margin-bottom: 25px;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-        }
-
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 0 20px 60px;
-        }
-
-        section {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 35px;
+        .hero p {
+            font-size: 1.5rem;
+            color: var(--text-gold);
+            max-width: 800px;
             margin-bottom: 30px;
-        }
-
-        section h2 {
-            font-size: 1.8rem;
-            margin-bottom: 15px;
-            color: var(--accent-color);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .news-card {
-            background: rgba(255, 255, 255, 0.02);
-            border-left: 3px solid var(--accent-color);
-            padding: 15px 20px;
-            margin-top: 15px;
-            border-radius: 0 8px 8px 0;
-        }
-
-        .news-date {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-bottom: 5px;
-        }
-
-        .platforms {
-            margin-top: 15px;
-            display: flex;
-            gap: 20px;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
         .btn {
-            display: inline-block;
-            background-color: var(--accent-color);
-            color: white;
-            padding: 12px 28px;
-            border-radius: 6px;
+            background: var(--red);
+            color: #fff;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-transform: uppercase;
             text-decoration: none;
-            font-weight: 600;
-            margin-top: 15px;
-            transition: 0.2s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 0 15px rgba(211, 47, 47, 0.4);
+            transition: 0.3s;
         }
 
         .btn:hover {
-            opacity: 0.9;
-            transform: translateY(-2px);
+            background: #fff;
+            color: var(--bg-black);
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.8);
         }
 
+        /* Общие секции */
+        .container {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2.8rem;
+            color: var(--red);
+            text-transform: uppercase;
+            border-left: 5px solid var(--red);
+            padding-left: 15px;
+            margin-bottom: 40px;
+            letter-spacing: 2px;
+        }
+
+        /* Новости */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .news-card {
+            background: var(--panel-bg);
+            border: 1px solid #2a2a2a;
+            border-top: 3px solid var(--red);
+            padding: 25px;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .news-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--red);
+        }
+
+        .news-date {
+            font-size: 0.9rem;
+            color: var(--text-gold);
+            margin-bottom: 10px;
+        }
+
+        .news-card h3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .news-card p {
+            color: #aaa;
+            line-height: 1.6;
+        }
+
+        /* О игре / Лор */
+        .lore-box {
+            background: var(--panel-bg);
+            padding: 40px;
+            border: 1px solid #333;
+            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.8);
+        }
+
+        .lore-box p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #ccc;
+            margin-bottom: 20px;
+        }
+
+        /* Подвал */
         footer {
             text-align: center;
             padding: 40px 20px;
-            border-top: 1px solid var(--border-color);
-            color: var(--text-muted);
+            background: #050505;
+            border-top: 1px solid #222;
+            color: #666;
             font-size: 0.9rem;
         }
 
-        footer a {
-            color: var(--text-main);
-            text-decoration: none;
+        footer strong {
+            color: var(--red);
         }
-
-        /* Динамическое переключение языков */
-        .lang-en { display: none; }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="header-left">
-            <!-- Используем данные логотипа как изображение -->
-            <img src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgNTAwIDUwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWx0ZXI9InVybCgjZ2xpdGNoLTApIj48cGF0aCBkPSJNMjUwIDUwTDQwIDQ1MGg0MjBMMjUwIDUwek0yNTAgMTAwTDIxNSA0MjBoNzBMMjUwIDEwMHoiIGZpbGw9IiMwMDhiZmYiLz48cGF0aCBkPSJNMjUwIDEyMEwyMjUgNDEwaDUwTDI1MCAxMjB6TTI1MCAxNDBMMjM1IDM5MGgzMEwyNTAgMTQwek0yNTAgMTYwTDI0NSAzNzBoMTBMMjUwIDE2MHoiIGZpbGw9IiNmZjAwNmMiLz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxOTAsIDI3MCkgc2NhbGUoMi41KSI+PHBhdGggZD0iTTAgMjBMNDAgMEg0MEw0MCA0MEgwWk01IDU1TDYwIDUwTDQwIDU1SDBaTTE1IDg1TDI1IDc1SDQwVjkwSDVWMzBaIiBmaWxsPSIjYmMwMDFlIi8+PC9nPjwvZz48ZmlsdGVyIGlkPSJnbGl0Y2gtMCIgeD0iLTQwJSIgeT0iLTQwJSIgd2lkdGg9IjE4MCU%" height="35" class="logo-img" alt="Red Reign Logo">
-            <div class="header-title">RED REIGN</div>
-        </div>
-        <div class="lang-switch">
-            <button id="btn-ru" class="active" onclick="setLang('ru')">RU</button>
-            <button id="btn-en" onclick="setLang('en')">EN</button>
-        </div>
+        <div class="logo">RED REIGN</div>
+        <nav>
+            <a href="#about">О Игре</a>
+            <a href="#news">Сводки К.Н.В.</a>
+            <a href="#media">Галерея</a>
+        </nav>
     </header>
 
-    <div class="hero">
-        <h1 class="lang-ru">RED REIGN</h1>
-        <h1 class="lang-en">RED REIGN</h1>
-        <p class="tagline lang-ru">Его Правление Не Имеет Конца</p>
-        <p class="tagline lang-en">His Reign Never Ended</p>
-        <p class="lang-ru">Постапокалиптический ретро-футуристический триллер о выживании на руинах Москвы.</p>
-        <p class="lang-en">A post-apocalyptic retro-futuristic survival thriller set in the ruins of Moscow.</p>
-    </div>
+    <section class="hero">
+        <h1>СССР ВОЗРОЖДЕН</h1>
+        <p>Нулевая зона. Вирус B.E.S. Сможешь ли ты выжить в аду, сотворенном К.Н.В.?</p>
+        <a href="#news" class="btn">Читать сводки</a>
+    </section>
 
-    <div class="container">
-        
-        <!-- СЮЖЕТ -->
-        <section>
-            <h2 class="lang-ru">Сюжет</h2>
-            <h2 class="lang-en">Story</h2>
-            <p class="lang-ru">Мир утонул в тумане. Там, где когда-то возвышался Кремль, теперь лишь руины и тени забытого прошлого. Вы — выживший, чья единственная зацепка к правде о случившемся — это таинственное «Его Правление», которое, кажется, никогда не заканчивалось. Вам предстоит столкнуться не только с суровыми условиями и заброшенными объектами, но и с психологическим давлением постоянной неизвестности. Ресурсы всегда на исходе, и каждое решение имеет вес.</p>
-            <p class="lang-en">The world is engulfed in fog. Where the Kremlin once stood, only ruins and shadows of a forgotten past remain. You are a survivor, and your only clue to the truth of what happened is the mysterious 'His Reign,' which seems to have never ended. You will face not only harsh environmental conditions and abandoned sites but also the psychological pressure of constant uncertainty. Resources are always scarce, and every decision carries weight.</p>
-        </section>
+    <section class="container" id="about">
+        <h2 class="section-title">О Проекте</h2>
+        <div class="lore-box">
+            <p><strong>2026 ГОД.</strong> В результате государственного переворота к власти приходит Комитет Народного Возрождения (К.Н.В.). Восстановив идеалы СССР и подмяв под себя республики за 10 часов, режим задействовал биологическое оружие «В.Е.S.» для тотального контроля.</p>
+            <p>В результате крушения поезда с вирусом половина страны оказалась в эпицентре биологического ада. Главный герой — единственный выживший после крушения частного лайнера в «Нулевой зоне». У тебя есть всего 5 часов, чтобы пробиться к Архиву К.Н.В. и узнать правду.</p>
+        </div>
+    </section>
 
-        <!-- ЛОР -->
-        <section>
-            <h2 class="lang-ru">Лор</h2>
-            <h2 class="lang-en">Lore</h2>
-            <p class="lang-ru">Когда мир рухнул, немногие, кто выжил, цеплялись за остатки старых технологий. Лор RED REIGN пропитан ретро-футуризмом, где громоздкие ЭВМ соседствуют с обветшалыми советскими бетонными конструкциями. Странные глитч-сигналы и непонятные аномалии — это повседневная реальность. Выжившие пытаются расшифровать эти сигналы, надеясь понять, что же на самом деле произошло в те роковые дни, когда «Правление» началось.</p>
-            <p class="lang-en">When the world fell, the few who survived clung to the remnants of old technology. The lore of RED REIGN is steeped in retro-futurism, where bulky computers sit alongside dilapidated Soviet concrete structures. Strange glitch-signals and unfathomable anomalies are part of everyday reality. Survivors try to decode these signals, hoping to understand what really happened in those fatal days when the 'Reign' began.</p>
-        </section>
-
-        <!-- О СТУДИИ -->
-        <section>
-            <h2 class="lang-ru">О студии</h2>
-            <h2 class="lang-en">About the Studio</h2>
-            <p class="lang-ru">RED REIGN разрабатывается независимой инди-командой Forred Studio. Наша цель — создавать глубокие сюжетные игры с упором на атмосферу, психологический триллер и уникальный визуальный стиль.</p>
-            <p class="lang-en">RED REIGN is being developed by Forred Studio, an independent indie team. Our goal is to create deep, story-driven games with an emphasis on atmosphere, psychological thrillers, and a unique visual style.</p>
-        </section>
-
-        <!-- НОВОСТИ -->
-        <section>
-            <h2 class="lang-ru">Новости и Блог разработки</h2>
-            <h2 class="lang-en">News & Devlog</h2>
-            
+    <section class="container" id="news">
+        <h2 class="section-title">Последние Новости</h2>
+        <div class="news-grid">
             <div class="news-card">
-                <div class="news-date">2026</div>
-                <strong class="lang-ru">Анонс проекта: Постапокалипсис в Москве</strong>
-                <strong class="lang-en">Project Announcement: Post-Apocalypse in Moscow</strong>
-                <p class="lang-ru">Мы официально анонсируем RED REIGN! Весь процесс разработки, от концепт-артов до лора, будет опубликован в нашем блоге.</p>
-                <p class="lang-en">We officially announce RED REIGN! The entire development process, from concept art to lore, will be published on our blog.</p>
+                <div class="news-date">10 АВГУСТА 2026</div>
+                <h3>Утечка штамма B.E.S. в Нулевой Зоне</h3>
+                <p>Комитет Народного Возрождения вводит усиленные патрули. Связь с центральным архивом временно ограничена.</p>
             </div>
-
-            <a href="https://dtf.ru" target="_blank" class="btn lang-ru">Читать Девблог на DTF</a>
-            <a href="https://dtf.ru" target="_blank" class="btn lang-en">Read Devlog on DTF</a>
-        </section>
-
-        <!-- ПЛАТФОРМЫ И РЕЛИЗ -->
-        <section>
-            <h2 class="lang-ru">Релиз и Платформы</h2>
-            <h2 class="lang-en">Release & Platforms</h2>
-            <p class="lang-ru">Выход игры запланирован на 2027 год.</p>
-            <p class="lang-en">The game is scheduled for release in 2027.</p>
-            <div class="platforms">
-                <span>XBOX</span>
-                <span>STEAM</span>
-                <span>PS5</span>
+            <div class="news-card">
+                <div class="news-date">06 АВГУСТА 2026</div>
+                <h3>Мобилизация К.Н.В. завершена</h3>
+                <p>Силы К.Н.В. полностью взяли под контроль ключевые транспортные узлы и подземелья. Гражданским рекомендовано не покидать укрытия.</p>
             </div>
-        </section>
-
-    </div>
+            <div class="news-card">
+                <div class="news-date">01 АВГУСТА 2026</div>
+                <h3>Старт предзаказов и разработки</h3>
+                <p>Разработка выходит на финишную прямую. Логические модули и сюжетная база RED REIGN официально зафиксированы.</p>
+            </div>
+        </div>
+    </section>
 
     <footer>
-        <p>© 2026 Forred Studio. Developed in Russia. All rights reserved.</p>
+        <p>© 2026 <strong>RED REIGN TEAM</strong>. Все права защищены Комитетом Народного Возрождения (К.Н.В.).</p>
     </footer>
 
-    <script>
-        function setLang(lang) {
-            // Переключаем контент
-            document.querySelectorAll('.lang-ru').forEach(el => el.style.display = lang === 'ru' ? 'block' : 'none');
-            document.querySelectorAll('.lang-en').forEach(el => el.style.display = lang === 'en' ? 'block' : 'none');
-            
-            // Переключаем кнопки
-            document.getElementById('btn-ru').classList.toggle('active', lang === 'ru');
-            document.getElementById('btn-en').classList.toggle('active', lang === 'en');
-            
-            // Сохраняем язык (можно будет добавить LocalStorage)
-        }
-    </script>
 </body>
 </html>
