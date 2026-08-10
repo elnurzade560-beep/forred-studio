@@ -3,30 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RED REIGN — Официальный сайт</title>
-    <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Oswald:wght@500;700&family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
+    <title>RED REIGN — Official Game Site</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --red: #d32f2f;
-            --dark-red: #8b0000;
-            --bg-black: #0d0d0d;
-            --panel-bg: #161616;
-            --text-gold: #e6c687;
-            --text-white: #e0e0e0;
+            --accent-red: #ff2a2a;
+            --glow-red: rgba(255, 42, 42, 0.6);
+            --bg-dark: #070709;
+            --card-bg: rgba(18, 18, 24, 0.7);
+            --border-glow: rgba(255, 42, 42, 0.25);
+            --text-main: #f0f0f5;
+            --text-dim: #8a8a9e;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            scroll-behavior: smooth;
         }
 
         body {
-            background-color: var(--bg-black);
-            color: var(--text-white);
-            font-family: 'Roboto Condensed', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
             overflow-x: hidden;
-            background-image: radial-gradient(circle at center, #1a0505 0%, #0d0d0d 100%);
+            background-image: 
+                radial-gradient(circle at 50% 0%, rgba(255, 42, 42, 0.15) 0%, transparent 60%),
+                radial-gradient(circle at 80% 80%, rgba(120, 0, 0, 0.1) 0%, transparent 50%);
         }
 
         /* Шапка */
@@ -34,226 +38,296 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 50px;
-            background: rgba(13, 13, 13, 0.95);
-            border-bottom: 3px solid var(--red);
-            position: sticky;
+            padding: 15px 5%;
+            background: rgba(7, 7, 9, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-glow);
+            position: fixed;
+            width: 100%;
             top: 0;
-            z-index: 100;
+            z-index: 1000;
         }
 
-        .logo {
-            font-family: 'Oswald', sans-serif;
-            font-size: 2.2rem;
-            color: var(--red);
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            text-shadow: 0 0 10px rgba(211, 47, 47, 0.5);
-            border: 2px solid var(--red);
-            padding: 5px 15px;
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-img {
+            height: 42px;
+            object-fit: contain;
+            filter: drop-shadow(0 0 8px var(--glow-red));
+        }
+
+        /* Текстовое лого если картинки пока нет */
+        .logo-text {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 900;
+            background: linear-gradient(180deg, #ffffff 0%, #ff4d4d 70%, #800000 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 2px;
+            text-shadow: 0 0 15px var(--glow-red);
+        }
+
+        nav {
+            display: flex;
+            gap: 25px;
         }
 
         nav a {
-            color: var(--text-white);
+            color: var(--text-dim);
             text-decoration: none;
-            margin-left: 30px;
-            font-size: 1.1rem;
+            font-size: 0.95rem;
+            font-weight: 600;
             text-transform: uppercase;
-            font-weight: bold;
             letter-spacing: 1px;
-            transition: color 0.3s;
+            transition: all 0.3s ease;
         }
 
         nav a:hover {
-            color: var(--red);
+            color: var(--accent-red);
+            text-shadow: 0 0 10px var(--glow-red);
         }
 
-        /* Главный баннер (Hero Section) */
+        /* Главная секция (Hero) */
         .hero {
-            height: 80vh;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            border-bottom: 2px solid #333;
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)), url('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1920') center/cover;
-            padding: 0 20px;
+            padding: 120px 20px 60px;
+            background: radial-gradient(ellipse at center, rgba(0,0,0,0.4) 0%, rgba(7,7,9,1) 90%), 
+                        url('https://images.unsplash.com/photo-1578632767115-351597cf2477?q=80&w=1920') center/cover;
+            position: relative;
         }
 
-        .hero h1 {
-            font-family: 'Oswald', sans-serif;
-            font-size: 5rem;
-            color: #fff;
-            text-transform: uppercase;
-            letter-spacing: 8px;
-            margin-bottom: 10px;
-            text-shadow: 3px 3px 0px var(--dark-red);
+        .hero-logo {
+            max-width: 90%;
+            width: 550px;
+            margin-bottom: 25px;
+            filter: drop-shadow(0 0 25px rgba(255, 42, 42, 0.5));
+            animation: pulse 4s infinite alternate;
+        }
+
+        @keyframes pulse {
+            0% { filter: drop-shadow(0 0 15px rgba(255, 42, 42, 0.4)); }
+            100% { filter: drop-shadow(0 0 35px rgba(255, 42, 42, 0.8)); }
         }
 
         .hero p {
-            font-size: 1.5rem;
-            color: var(--text-gold);
-            max-width: 800px;
-            margin-bottom: 30px;
+            font-size: 1.25rem;
+            color: var(--text-dim);
+            max-width: 650px;
+            margin-bottom: 40px;
+            line-height: 1.6;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+        }
+
+        .btn-main {
+            background: linear-gradient(135deg, #ff2a2a 0%, #990000 100%);
+            color: #fff;
+            padding: 18px 48px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 2px;
-        }
-
-        .btn {
-            background: var(--red);
-            color: #fff;
-            padding: 15px 40px;
-            font-size: 1.2rem;
-            font-weight: bold;
-            text-transform: uppercase;
             text-decoration: none;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 0 15px rgba(211, 47, 47, 0.4);
-            transition: 0.3s;
+            border-radius: 4px;
+            box-shadow: 0 0 25px var(--glow-red);
+            border: 1px solid #ff6666;
+            transition: all 0.3s ease;
         }
 
-        .btn:hover {
-            background: #fff;
-            color: var(--bg-black);
-            box-shadow: 0 0 25px rgba(255, 255, 255, 0.8);
+        .btn-main:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 0 40px rgba(255, 42, 42, 0.9);
+            background: linear-gradient(135deg, #ff4d4d 0%, #cc0000 100%);
         }
 
-        /* Общие секции */
+        /* Общие контейнеры */
         .container {
             max-width: 1200px;
-            margin: 60px auto;
-            padding: 0 20px;
+            margin: 100px auto;
+            padding: 0 25px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 50px;
         }
 
         .section-title {
-            font-family: 'Oswald', sans-serif;
-            font-size: 2.8rem;
-            color: var(--red);
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 900;
             text-transform: uppercase;
-            border-left: 5px solid var(--red);
-            padding-left: 15px;
-            margin-bottom: 40px;
             letter-spacing: 2px;
+            background: linear-gradient(90deg, #fff, var(--text-dim));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        /* Новости */
-        .news-grid {
+        .title-line {
+            flex-grow: 1;
+            height: 1px;
+            background: linear-gradient(90deg, var(--accent-red), transparent);
+        }
+
+        /* Карточки сюжета / лора */
+        .lore-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
         }
 
-        .news-card {
-            background: var(--panel-bg);
-            border: 1px solid #2a2a2a;
-            border-top: 3px solid var(--red);
-            padding: 25px;
-            transition: transform 0.3s, border-color 0.3s;
+        .glass-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-glow);
+            border-radius: 12px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
 
-        .news-card:hover {
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent-red), transparent);
+            opacity: 0;
+            transition: 0.3s;
+        }
+
+        .glass-card:hover {
             transform: translateY(-5px);
-            border-color: var(--red);
+            border-color: var(--accent-red);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5), 0 0 20px rgba(255, 42, 42, 0.2);
         }
 
-        .news-date {
-            font-size: 0.9rem;
-            color: var(--text-gold);
-            margin-bottom: 10px;
+        .glass-card:hover::before {
+            opacity: 1;
         }
 
-        .news-card h3 {
-            font-family: 'Oswald', sans-serif;
-            font-size: 1.6rem;
+        .card-tag {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.8rem;
+            color: var(--accent-red);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+        }
+
+        .glass-card h3 {
+            font-size: 1.4rem;
             margin-bottom: 15px;
-            color: #fff;
+            font-weight: 700;
         }
 
-        .news-card p {
-            color: #aaa;
+        .glass-card p {
+            color: var(--text-dim);
             line-height: 1.6;
-        }
-
-        /* О игре / Лор */
-        .lore-box {
-            background: var(--panel-bg);
-            padding: 40px;
-            border: 1px solid #333;
-            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.8);
-        }
-
-        .lore-box p {
-            font-size: 1.2rem;
-            line-height: 1.8;
-            color: #ccc;
-            margin-bottom: 20px;
+            font-size: 0.95rem;
         }
 
         /* Подвал */
         footer {
             text-align: center;
             padding: 40px 20px;
-            background: #050505;
-            border-top: 1px solid #222;
-            color: #666;
-            font-size: 0.9rem;
+            background: #040405;
+            border-top: 1px solid #15151c;
+            color: var(--text-dim);
+            font-size: 0.85rem;
         }
 
-        footer strong {
-            color: var(--red);
+        footer span {
+            color: var(--accent-red);
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            nav { display: none; }
+            .hero-logo { width: 320px; }
+            .section-title { font-size: 1.6rem; }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo">RED REIGN</div>
+        <div class="logo-container">
+            <!-- Укажи название файла своего логотипа -->
+            <img src="logo.png" alt="RED REIGN Logo" class="logo-img" onerror="this.style.display='none'; document.getElementById('alt-logo').style.display='block';">
+            <div id="alt-logo" class="logo-text" style="display:none;">RED REIGN</div>
+        </div>
         <nav>
-            <a href="#about">О Игре</a>
-            <a href="#news">Сводки К.Н.В.</a>
-            <a href="#media">Галерея</a>
+            <a href="#about">О проекте</a>
+            <a href="#lore">Лор & Сюжет</a>
+            <a href="#news">Новости</a>
         </nav>
     </header>
 
     <section class="hero">
-        <h1>СССР ВОЗРОЖДЕН</h1>
-        <p>Нулевая зона. Вирус B.E.S. Сможешь ли ты выжить в аду, сотворенном К.Н.В.?</p>
-        <a href="#news" class="btn">Читать сводки</a>
+        <!-- Твой логотип в центре страницы -->
+        <img src="logo.png" alt="RED REIGN" class="hero-logo" onerror="this.onerror=null; this.src='https://i.ibb.co/6y45p5g/redreign-logo.png';">
+        <p>Нулевая зона. Вирус B.E.S. Реанимация СССР силами К.Н.В. Выживи в эпицентре хаоса и пробейся к Архиву.</p>
+        <a href="#lore" class="btn-main">Вход в Нулевую Зону</a>
     </section>
 
     <section class="container" id="about">
-        <h2 class="section-title">О Проекте</h2>
-        <div class="lore-box">
-            <p><strong>2026 ГОД.</strong> В результате государственного переворота к власти приходит Комитет Народного Возрождения (К.Н.В.). Восстановив идеалы СССР и подмяв под себя республики за 10 часов, режим задействовал биологическое оружие «В.Е.S.» для тотального контроля.</p>
-            <p>В результате крушения поезда с вирусом половина страны оказалась в эпицентре биологического ада. Главный герой — единственный выживший после крушения частного лайнера в «Нулевой зоне». У тебя есть всего 5 часов, чтобы пробиться к Архиву К.Н.В. и узнать правду.</p>
+        <div class="section-header">
+            <h2 class="section-title">Вселенная Игры</h2>
+            <div class="title-line"></div>
+        </div>
+        <div class="lore-grid">
+            <div class="glass-card">
+                <div class="card-tag">01 // Переворот</div>
+                <h3>Режим К.Н.В.</h3>
+                <p>Комитет Народного Возрождения захватывает власть и за 10 часов восстанавливает границы СССР. Жесткий тоталитарный контроль и гигантская армия мобилизации.</p>
+            </div>
+            <div class="glass-card">
+                <div class="card-tag">02 // Утечка</div>
+                <h3>Штамм B.E.S.</h3>
+                <p>Крушение состава с биооружием превращает половину территории в Нулевую Зону. Мутации, разруха и опаснейшая зона карантина.</p>
+            </div>
+            <div class="glass-card">
+                <div class="card-tag">03 // Цель</div>
+                <h3>Нулевой Архив</h3>
+                <p>Единственный выживший в катастрофе должен пройти 5-часовой хардкорный путь сквозь засады, зараженные секторы и разгадать секреты К.Н.В.</p>
+            </div>
         </div>
     </section>
 
     <section class="container" id="news">
-        <h2 class="section-title">Последние Новости</h2>
-        <div class="news-grid">
-            <div class="news-card">
-                <div class="news-date">10 АВГУСТА 2026</div>
-                <h3>Утечка штамма B.E.S. в Нулевой Зоне</h3>
-                <p>Комитет Народного Возрождения вводит усиленные патрули. Связь с центральным архивом временно ограничена.</p>
+        <div class="section-header">
+            <h2 class="section-title">Оперативная Связь</h2>
+            <div class="title-line"></div>
+        </div>
+        <div class="lore-grid">
+            <div class="glass-card">
+                <div class="card-tag">10 АВГУСТА 2026</div>
+                <h3>Перехват сигнала из Нулевой Зоны</h3>
+                <p>Патрули К.Н.В. перекрыли основные периметры. Пожитки выживших изымаются, доступ к архивам заблокирован.</p>
             </div>
-            <div class="news-card">
-                <div class="news-date">06 АВГУСТА 2026</div>
-                <h3>Мобилизация К.Н.В. завершена</h3>
-                <p>Силы К.Н.В. полностью взяли под контроль ключевые транспортные узлы и подземелья. Гражданским рекомендовано не покидать укрытия.</p>
-            </div>
-            <div class="news-card">
-                <div class="news-date">01 АВГУСТА 2026</div>
-                <h3>Старт предзаказов и разработки</h3>
-                <p>Разработка выходит на финишную прямую. Логические модули и сюжетная база RED REIGN официально зафиксированы.</p>
+            <div class="glass-card">
+                <div class="card-tag">06 АВГУСТА 2026</div>
+                <h3>Развертывание сил К.Н.В.</h3>
+                <p>Мобилизация свыше 3.5 млн единиц личного состава полностью завершена. Границы бывших республик под контролем.</p>
             </div>
         </div>
     </section>
 
     <footer>
-        <p>© 2026 <strong>RED REIGN TEAM</strong>. Все права защищены Комитетом Народного Возрождения (К.Н.В.).</p>
+        <p>© 2026 <span>RED REIGN DEVELOPMENT TEAM</span>. Все права защищены.</p>
     </footer>
 
 </body>
